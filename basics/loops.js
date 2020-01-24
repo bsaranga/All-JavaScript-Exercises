@@ -40,10 +40,3 @@ result = ''
 for(let k = 0; k<9; ++k){
     result += String(k)
 } console.log(result)
-
-console.log('Outputting even numbers from 2 to 10');
-
-for(let lo = 0; lo<10;){
-    if(lo % 2 != 0){continue}else{console.log(lo)}
-    lo++;;
-}
