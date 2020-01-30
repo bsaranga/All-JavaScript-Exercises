@@ -22,6 +22,6 @@ function vowelsAndConsonants(s){
     
 }
 
-let someString = 'virtual';
+let someString = 'Phacoemulsification';
 
 vowelsAndConsonants(someString);
