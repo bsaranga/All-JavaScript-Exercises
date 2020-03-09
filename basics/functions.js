@@ -84,4 +84,3 @@ console.log(Pow(2,4));
 console.log(Pow(8,2));
 console.log(Pow(5,3));
 console.log(Pow(7,2));
-
