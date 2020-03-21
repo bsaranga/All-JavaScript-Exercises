@@ -27,5 +27,5 @@ let case2 = "   The   quick brown     fox   jumped over the lazy dog";
 let case3 = "3500 men camped at Mt.Everest in celebration of the 25th anniversary of ...";
 
 console.log(wordCount(case1));
-console.log(wordCount(case2));
+console.log(wordCount(case2)); //fails here
 console.log(wordCount(case3));

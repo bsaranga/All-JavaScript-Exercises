@@ -3,11 +3,14 @@ function vowelsAndConsonants(s){
     s = s.toString().toLowerCase();
     let vowels = 'aeiou';
     let consonants = 'bcdfghjklmnpqrstvwxyz';
+
+    let outVowels = '';
+    let outConsonants = '';
     
     for(let j=0; j<s.length; j++){
         for(let k=0; k<vowels.length; k++){
             if(s[j] === vowels[k]){
-                console.log(s[j]);
+                outVowels += `${s[j]} `;
             }
         }
     }
@@ -15,10 +18,13 @@ function vowelsAndConsonants(s){
     for(let j=0; j<s.length; j++){
         for(let k=0; k<consonants.length; k++){
             if(s[j] === consonants[k]){
-                console.log(s[j]);
+                outConsonants += `${s[j]} `;
             }
         }
     }
+
+    console.log(outVowels);
+    console.log(outConsonants);
     
 }
 

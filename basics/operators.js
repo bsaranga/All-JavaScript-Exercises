@@ -2,11 +2,11 @@
 
 /* Unary and Binary Operator */
 
-// '-' is the unary negation operator
+// '-' is the unary numeric negation operator
 
 let number_1 = 1;
 
-console.log(-number_1); //prints the negation of the above variable
+console.log(-number_1); //prints the numeric negation of the above variable
 
 // '+' is a binary operation that is overloaded for string concatenation if either operand is a strings
 

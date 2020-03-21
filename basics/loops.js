@@ -19,6 +19,8 @@ outer: for(let i = 0; ;i++){
     console.log(`Currently i = ${i} from the outer loop`)
 }
 
+//---------------------------------------------------------------------------
+
 let counter = 0;
 
 while(counter++ < 5){
@@ -30,6 +32,8 @@ counter = 0;
 while(++counter < 5){
     console.log(`Counter incremented to ${counter} with pre-fix incrementer`);
 }
+
+//Number string
 
 let result = '';
 for(let k = 0; k<9; k++){

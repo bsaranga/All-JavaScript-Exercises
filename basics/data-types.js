@@ -68,4 +68,3 @@ console.log($js)
 console.log(typeof($js))
 
 // As seen above a variable without an assignment holds the value 'undefined' by default, therefore it can be used as a means to check for variable which are un-assigned
-
