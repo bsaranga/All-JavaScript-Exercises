@@ -1,0 +1,3 @@
+A polyfill is a script that adds or patches a version of
+JavaScript with a new implementation of a function which is 
+not currently available.
