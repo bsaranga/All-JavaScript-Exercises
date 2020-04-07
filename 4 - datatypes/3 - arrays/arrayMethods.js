@@ -89,3 +89,137 @@ users_found = users2.filter( function(item, index){
 
 console.log('New print: ');
 console.log(users_found);
+
+console.log('-------------------------------------------------------------------------------------\n\n');
+
+// Using the map function to transform array elements
+
+let lotr_char = ["Bilbo", "Gandalf", "Nazgul"];
+
+let lotr_char_len = lotr_char.map(item => item.length);
+
+lotr_char_len = lotr_char.map(function (item, index, arr) { return item.toUpperCase()+'_'+index.toString()+'_'+arr[index].toString()});
+
+console.log(lotr_char_len);
+
+// Sorting numeric arrays
+
+let num_arr = [12,2,3,7,6,4,9,1,5];
+
+num_arr.sort((a,b) => a - b);
+
+console.log(num_arr);
+
+num_arr.sort((a,b) => b - a);
+
+console.log(num_arr);
+
+console.log('-------------------------------------------------------------------------------------\n\n');
+
+// Reverse elements
+
+lotr_char.reverse();
+
+console.log(lotr_char);
+
+console.log('-------------------------------------------------------------------------------------\n\n');
+
+// Splitting a string into array using a delimiter
+
+let lotrString = 'Bilbo, Gandalf, Nazgul, Saruman';
+
+let lotrGenArr = lotrString.split(', ');
+
+lotrGenArr.forEach(e => console.log(e));
+
+let str_0 = 'helloworld';
+
+let str_0_letters = str_0.split('');
+
+str_0_letters.forEach(e => console.log(e));
+
+console.log('-------------------------------------------------------------------------------------\n\n');
+
+// Array join to string - the opposite of split
+
+let str_1 = lotr_char.join(', ');
+console.log(str_1);
+
+// Mapping onto the same array
+
+let arr_mapTest = ["Bilbo", "Gandalf", "Nazgul"];
+
+arr_mapTest = arr_mapTest.map(item => item.toUpperCase());
+
+console.log(arr_mapTest);
+
+console.log('-------------------------------------------------------------------------------------\n\n');
+
+// Using reduce
+
+function multiplier(arr){
+    return arr.reduce((fac, item) => fac * item, 1);
+}
+
+console.log(multiplier([5,4,3,2,1]));
+
+function adder(arr){
+    return arr.reduce((sum, item) => sum + item, 0);
+}
+
+console.log(adder([5,4,3,2,1,-1]));
+
+// Distinguishing arrays
+
+console.log(Array.isArray({}));
+console.log(Array.isArray([]));
+console.log(Array.isArray([1,2,3]));
+
+// Use of 'thisArg' in array methods
+
+let army = {
+    minAge: 18,
+    maxAge: 27,
+    canJoin(user) {
+      return user.age >= this.minAge && user.age < this.maxAge;
+    }
+  };
+  
+  let users_army = [
+    {age: 16},
+    {age: 20},
+    {age: 23},
+    {age: 30}
+  ];
+  
+  // find users, for who army.canJoin returns true
+  let soldiers = users_army.filter(army.canJoin, army);
+
+console.log(soldiers);
+
+console.log('-------------------------------------------------------------------------------------\n\n');
+
+// Camelize string
+
+function camelize(str){
+    return str
+            .split('-')
+            .map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
+            .join('');
+}
+
+console.log(camelize('-web-kit-anim'));
+
+// Filter range
+
+function filterRange(arr, a, b) {
+    return arr.filter(item => (item >= a && item <= b));
+}
+
+console.log(filterRange([5,3,2,1,6,9,8,7], 0, 3));
+
+// Filter range in place
+
+function filterRangeInPlace(arr, a, b) {
+    
+}
