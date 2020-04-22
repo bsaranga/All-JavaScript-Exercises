@@ -22,7 +22,7 @@ arr.splice(-1, 0, 'Saul', 'Pete');
 
 console.log(arr);
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('1-------------------------------------------------------------------------------------\n\n');
 
 // Using slice
 
@@ -34,7 +34,7 @@ console.log(arr_clone.slice(1,3));
 
 console.log(arr_clone);
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('2-------------------------------------------------------------------------------------\n\n');
 
 // Using concat
 
@@ -49,7 +49,7 @@ expanded_family.concat('Gus', 'Tom');
 console.log(expanded_family); // the concat operation returns a new array that must be assigned to a new variable, it doesn't mutate the array in place.
 
 // Using the find method
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('3-------------------------------------------------------------------------------------\n\n');
 
 let users = [
     {id: 1, name: "John"},
@@ -90,7 +90,7 @@ users_found = users2.filter( function(item, index){
 console.log('New print: ');
 console.log(users_found);
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('4-------------------------------------------------------------------------------------\n\n');
 
 // Using the map function to transform array elements
 
@@ -114,7 +114,7 @@ num_arr.sort((a,b) => b - a);
 
 console.log(num_arr);
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('5-------------------------------------------------------------------------------------\n\n');
 
 // Reverse elements
 
@@ -122,7 +122,7 @@ lotr_char.reverse();
 
 console.log(lotr_char);
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('6-------------------------------------------------------------------------------------\n\n');
 
 // Splitting a string into array using a delimiter
 
@@ -138,7 +138,7 @@ let str_0_letters = str_0.split('');
 
 str_0_letters.forEach(e => console.log(e));
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('7-------------------------------------------------------------------------------------\n\n');
 
 // Array join to string - the opposite of split
 
@@ -153,12 +153,14 @@ arr_mapTest = arr_mapTest.map(item => item.toUpperCase());
 
 console.log(arr_mapTest);
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('8-------------------------------------------------------------------------------------\n\n');
 
 // Using reduce
 
 function multiplier(arr){
-    return arr.reduce((fac, item) => fac * item, 1);
+    return arr.reduce((fac, item) => {
+        return fac * item;
+    }, 1);
 }
 
 console.log(multiplier([5,4,3,2,1]));
@@ -197,7 +199,7 @@ let army = {
 
 console.log(soldiers);
 
-console.log('-------------------------------------------------------------------------------------\n\n');
+console.log('9-------------------------------------------------------------------------------------\n\n');
 
 // Camelize string
 
