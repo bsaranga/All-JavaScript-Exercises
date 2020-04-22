@@ -5,3 +5,50 @@ let range = {
     to: 5
 }
 
+range[Symbol.iterator] = function() {
+    return {
+        current: this.from,
+        last: this.to,
+
+        next() {
+            if(this.current <= this.last) {
+                return { done: false, value: this.current++ };
+            } else {
+                return { done: true };
+            }
+        }
+    };
+};
+
+for (let num of range) {
+    console.log(num);
+}
+
+function makeIterator(start, end, step) {
+    let iter = {
+        from: start,
+        to: end
+    };
+
+    iter[Symbol.iterator] = function () {
+        return {
+            current: this.from,
+            last: this.end,
+            next() {
+                if (this.current <= this.last) {
+                    return { done: false, value: this.current++ };
+                } else {
+                    return { done: true };
+                }
+            }
+        };
+    };
+
+    return iter;
+};
+
+let iter = makeIterator(0,10,0);
+
+for (let i of iter) {
+    console.log(i);
+}
