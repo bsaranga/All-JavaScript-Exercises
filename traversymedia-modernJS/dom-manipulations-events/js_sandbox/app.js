@@ -1,31 +1,55 @@
-// DOM Selectors for Single Elements
+// Get elements by class name
 
-console.log(document.getElementById('task-title'));
+const items = document.getElementsByClassName('collection-item'); //globally
 
-//Get things form an element
-console.log(document.getElementById('task-title').id);
-console.log(document.getElementById('task-title').className);
+console.log(items);
+console.log(items[0])
 
-const taskTitle = document.getElementById('task-title');
+items[0].style.color = 'red';
+items[3].textContent = 'Hello';
 
-// Change styling
-taskTitle.style.background = 'rgba(121,112,31,0.5)';
-taskTitle.style.padding = '5px';
+const listItems = document.querySelector('ul').getElementsByClassName('collection-item'); //locally on ul elements
 
-// Change content
+console.log(listItems);
 
-taskTitle.textContent = 'Task List';
-taskTitle.innerText = 'My Tasks';
-taskTitle.innerHTML = '<span style="color:rgb(128,128,50)">Task List</span>'
+// Get elements by tag name
 
-// Query Selector - (Newer and much more powerful)
+console.clear();
 
-console.log(document.querySelector('#task-title'));
-console.log(document.querySelector('.card-title'));
-console.log(document.querySelector('h5'));
+let lis = document.getElementsByTagName('li');
 
-document.querySelectorAll('li').forEach((e) => e.style.color = 'red');
-document.querySelector('li:nth-child(3)').style.color='blue';
-document.querySelector('li:last-child').style.color='green';
+// Convert lis to an array
 
-document.querySelectorAll('li:nth-child(odd)').forEach(e => e.style.background = 'rgba(128,128,128,0.15)');
+lis = Array.from(lis);
+
+lis.reverse();
+
+console.log(lis);
+
+lis.forEach((li,index) => {
+  li.style.color = 'blue';
+  li.textContent = `${index} - Item`;
+});
+
+// Using Query Selector All
+
+console.clear();
+
+const items2 = document.querySelectorAll('ul.collection li.collection-item');
+console.log(items2);
+
+items2.forEach((e,index) => {
+  e.style.color = 'green';
+  e.textContent += ` - ${index}`;
+})
+
+const liOdd = document.querySelectorAll('li:nth-child(odd)');
+const liEven = document.querySelectorAll('li:nth-child(even)');
+
+liOdd.forEach((item,index) => {
+  item.style.background = '#ccc';
+})
+
+liEven.forEach((item,index) => {
+  item.style.background = 'rgba(50,128,10,0.2)';
+})
