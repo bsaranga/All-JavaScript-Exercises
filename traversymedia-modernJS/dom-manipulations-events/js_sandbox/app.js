@@ -1,13 +1,19 @@
-let val;
+// Creating elements and inserting into the DOM
 
-val = document;
-val = document.all;
-val = document.all[7];
-val = document.all.length;
+const li = document.createElement('li');
 
-let scripts = document.scripts;
-let scriptsArr = Array.from(scripts);
+li.className = 'collection-item';
 
-scriptsArr.forEach((script) => console.log(script.getAttribute('src')));
+li.setAttribute('title', 'New Item');
 
-console.log(val);
+li.appendChild(document.createTextNode('Hello World'));
+
+const link = document.createElement('a');
+
+link.className = 'delete-item secondary-content';
+link.innerHTML = '<i class="fa fa-remove"></i>';
+li.appendChild(link);
+
+document.querySelector('ul.collection').appendChild(li);
+
+console.log(li);
