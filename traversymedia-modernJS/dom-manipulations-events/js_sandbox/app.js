@@ -1,13 +1,31 @@
-let val;
+// DOM Selectors for Single Elements
 
-val = document;
-val = document.all;
-val = document.all[7];
-val = document.all.length;
+console.log(document.getElementById('task-title'));
 
-let scripts = document.scripts;
-let scriptsArr = Array.from(scripts);
+//Get things form an element
+console.log(document.getElementById('task-title').id);
+console.log(document.getElementById('task-title').className);
 
-scriptsArr.forEach((script) => console.log(script.getAttribute('src')));
+const taskTitle = document.getElementById('task-title');
 
-console.log(val);
+// Change styling
+taskTitle.style.background = 'rgba(121,112,31,0.5)';
+taskTitle.style.padding = '5px';
+
+// Change content
+
+taskTitle.textContent = 'Task List';
+taskTitle.innerText = 'My Tasks';
+taskTitle.innerHTML = '<span style="color:rgb(128,128,50)">Task List</span>'
+
+// Query Selector - (Newer and much more powerful)
+
+console.log(document.querySelector('#task-title'));
+console.log(document.querySelector('.card-title'));
+console.log(document.querySelector('h5'));
+
+document.querySelectorAll('li').forEach((e) => e.style.color = 'red');
+document.querySelector('li:nth-child(3)').style.color='blue';
+document.querySelector('li:last-child').style.color='green';
+
+document.querySelectorAll('li:nth-child(odd)').forEach(e => e.style.background = 'rgba(128,128,128,0.15)');
