@@ -4,7 +4,7 @@ var Person = function(name){
     this.name = name;
 }
 
-Person.prototype.isPerson = true;
+Person.prototype.isPerson = true; // All instances point to the function's prototype, so 'isPerson' is available on all instances.
 
 var person = new Person('Smith');
 
