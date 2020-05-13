@@ -38,3 +38,26 @@ console.log(o.hasOwnProperty('c')); // returns false
 console.log(o.__proto__.hasOwnProperty('c')); // returns true
 
 console.log(o.d); // traverses the prototype chain until 'null' is encountered and returns undefined.
+
+
+// Inheriting methods
+
+var k = {
+    a: 2,
+    m: function () {
+        return this.a + 1; // this refers to o
+    }
+};
+
+var p = Object.create(k); // p is an object that inherits from o
+
+p.a = 4;
+console.log(p.m()); // the inherited function will be called where 'this' is the context of p.
+
+console.log(p.__proto__); // the inherited function can be seen in the prototype.
+
+p.m = function () {
+    return `${this.a + 2}, an overriden execution of function m`;
+}
+
+console.log(p.m());
