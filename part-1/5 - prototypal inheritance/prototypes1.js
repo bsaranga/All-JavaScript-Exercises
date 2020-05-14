@@ -44,8 +44,7 @@ console.log('\n--------------------------------------\n');
 function doSomething(){}
 console.log(doSomething.prototype);
 
-var doesSomething = function(){};
-console.log(doesSomething.prototype.constructor);
-
 var doesArrow = () => {};
 console.log(doesArrow.prototype); // arrow functions do not have a prototype
+
+console.log(doSomething);
