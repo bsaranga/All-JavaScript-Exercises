@@ -82,3 +82,31 @@ String.prototype.reverse = function () {
 
 var name = 'Saranga';
 console.log(name.reverse());
+
+console.log('\n-----------------4---------------------\n');
+
+function Human(name, age, weight, height) {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+    this.height = height;
+}
+
+Human.prototype = {
+    BMI: function() {
+        return this.weight/(this.height**2);
+    },
+    isObese: function() {
+        if(this.BMI()>35){
+            return true;
+        }
+        return false;
+    }
+}
+
+var Saranga = new Human('Buwaneka Saranga', 27, 80, 1.68);
+
+console.log(Saranga);
+console.log(Saranga.__proto__);
+console.log(Saranga.BMI());
+console.log(Saranga.isObese());
