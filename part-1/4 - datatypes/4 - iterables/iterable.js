@@ -20,6 +20,9 @@ range[Symbol.iterator] = function() {
     };
 };
 
+console.log(range);
+
+// consuming the iterator; iterating over the iterator
 for (let num of range) {
     console.log(num);
 }

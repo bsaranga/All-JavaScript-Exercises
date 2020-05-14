@@ -54,4 +54,4 @@ console.log(projectile.getAngle());
 //OR
 console.log((projectile.getAngle)());
 
-console.log(projectile); //when objects are printed they're converted to strings
+console.log(projectile);
