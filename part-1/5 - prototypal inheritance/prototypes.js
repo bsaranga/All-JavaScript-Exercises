@@ -38,3 +38,14 @@ console.log(o.hasOwnProperty('c')); // returns false
 console.log(o.__proto__.hasOwnProperty('c')); // returns true
 
 console.log(o.d); // traverses the prototype chain until 'null' is encountered and returns undefined.
+
+console.log('\n--------------------------------------\n');
+
+function doSomething(){}
+console.log(doSomething.prototype);
+
+var doesSomething = function(){};
+console.log(doesSomething.prototype.constructor);
+
+var doesArrow = () => {};
+console.log(doesArrow.prototype); // arrow functions do not have a prototype
