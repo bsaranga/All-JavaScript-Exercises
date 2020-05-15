@@ -46,3 +46,15 @@ console.log(myTriangle.constructor); // this prints the proper constructor becau
 // Using the 'instanceof' operator
 
 console.log(myTriangle instanceof Shape && myTriangle instanceof TwoDShape && myTriangle instanceof Triangle); // returns true
+
+console.log('\n----------------inheritance--chain--------------------\n');
+
+console.log(myTriangle.__proto__);
+console.log(`      *      \n      |      \n      |      \n      |      `);
+console.log(myTriangle.__proto__.__proto__);
+console.log(`      *      \n      |      \n      |      \n      |      `);
+console.log(myTriangle.__proto__.__proto__.__proto__);
+console.log(`      *      \n      |      \n      |      \n      |      `);
+console.log(myTriangle.__proto__.__proto__.__proto__.__proto__);
+console.log(`      *      \n      |      \n      |      \n      |      `);
+console.log(myTriangle.__proto__.__proto__.__proto__.__proto__.__proto__);

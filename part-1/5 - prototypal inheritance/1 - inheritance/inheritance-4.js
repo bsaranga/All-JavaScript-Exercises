@@ -1,18 +1,20 @@
-// Following from the previous code,
-// we will move shared properties to the 
-// prototype so properties that don't change
-// won't be created with every instantiation
+// Using a temporary constructor to overcome the previous problem
 
-function Shape() {};
+function Shape(){}
 // augmentation
-Shape.prototype.name = 'Shape';
-Shape.prototype.toString = function() {
+Shape.prototype.name = 'shape';
+Shape.prototype.toString = function () {
     return this.name;
-};
+}
 
 function TwoDShape() {};
 // inheritance
-TwoDShape.prototype = new Shape();
+// we define a temporary constructor function
+
+var F = function() {};
+F.prototype = Shape.prototype;
+
+TwoDShape.prototype = new F();
 TwoDShape.prototype.constructor = TwoDShape;
 // augmentation
 TwoDShape.prototype.name = '2D Shape';
@@ -23,7 +25,10 @@ function Triangle(side, height) {
     this.height = height;
 }
 // inheritance
-Triangle.prototype = new TwoDShape();
+var F = function() {};
+F.prototype = TwoDShape.prototype;
+
+Triangle.prototype = new F();
 Triangle.prototype.constructor = Triangle;
 // augmentation
 Triangle.prototype.name = 'Triangle';
@@ -45,6 +50,10 @@ console.log(myTriangle.constructor); // this prints the proper constructor becau
 // Using the 'instanceof' operator
 
 console.log(myTriangle instanceof Shape && myTriangle instanceof TwoDShape && myTriangle instanceof Triangle); // returns true
+
+console.log(Shape.prototype);
+console.log(TwoDShape.prototype);
+console.log(Triangle.prototype);
 
 console.log('\n----------------inheritance--chain--------------------\n');
 
