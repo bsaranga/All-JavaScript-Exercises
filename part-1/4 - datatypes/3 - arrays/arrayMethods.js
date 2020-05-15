@@ -98,6 +98,8 @@ let lotr_char = ["Bilbo", "Gandalf", "Nazgul"];
 
 let lotr_char_len = lotr_char.map(item => item.length);
 
+console.log(lotr_char_len);
+
 lotr_char_len = lotr_char.map(function (item, index, arr) { return item.toUpperCase()+'_'+index.toString()+'_'+arr[index].toString()});
 
 console.log(lotr_char_len);
@@ -159,6 +161,7 @@ console.log('8------------------------------------------------------------------
 
 function multiplier(arr){
     return arr.reduce((fac, item) => {
+        console.log(fac);
         return fac * item;
     }, 1);
 }
@@ -210,7 +213,7 @@ function camelize(str){
             .join('');
 }
 
-console.log(camelize('-web-kit-anim'));
+console.log(camelize('web-kit-anim'));
 
 // Filter range
 

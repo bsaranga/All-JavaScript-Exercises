@@ -2,7 +2,7 @@
 
 let range = {
     from: 1,
-    to: 5
+    to: 12
 }
 
 range[Symbol.iterator] = function() {
@@ -26,4 +26,3 @@ console.log(range);
 for (let num of range) {
     console.log(num);
 }
-

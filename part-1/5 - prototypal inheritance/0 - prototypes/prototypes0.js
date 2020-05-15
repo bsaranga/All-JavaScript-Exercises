@@ -55,6 +55,9 @@ Human.prototype = mammal;
 
 var saranga = new Human('Saranga'); // instantiation
 console.log(mammal.isPrototypeOf(saranga)); // returns true
+console.log(saranga.__proto__);
+console.log(Human.prototype);
+console.log(saranga.__proto__.__proto__.__proto__);
 
 /**
  * __proto__ links to the prototype set by the constructor function of an object.
@@ -64,5 +67,3 @@ console.log(mammal.isPrototypeOf(saranga)); // returns true
  * 
  * __proto__ is not supported by IE, it is advised to use it only for debugging and educational purposes
  */
-
-console.log(saranga.__proto__);
