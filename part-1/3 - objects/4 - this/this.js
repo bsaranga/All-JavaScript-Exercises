@@ -2,15 +2,22 @@ let account = {
     startingAmount: 500,
     interest: 0.14,
     numYears: 2,
-    currBalance: function () {
-        return (this.startingAmount + this.startingAmount*(1+this.interest)**this.numYears);
+    pointsTo: this == account,
+    currBalance: currBal = function () {
+        return function () {
+            return (this.startingAmount + this.startingAmount*(1+this.interest)**this.numYears);
+        }
     },
     incYear: function () {
         this.numYears++;
     }
 }
 
-console.log(account.currBalance());
+let currentBal = account.currBalance();
+console.log(currentBal());
+console.log(account.pointsTo);
+
+/* console.log(account.currBalance());
 
 console.log(account.numYears);
 
@@ -54,4 +61,4 @@ console.log(projectile.getAngle());
 //OR
 console.log((projectile.getAngle)());
 
-console.log(projectile); //when objects are printed they're converted to strings
+console.log(projectile); */

@@ -1,3 +1,2 @@
-A polyfill is a script that adds or patches a version of
-JavaScript with a new implementation of a function which is 
-not currently available.
+A polyfill, or polyfiller, is a piece of code (or plugin) that provides the technology that you, 
+the developer, expect the browser to provide natively. Flattening the API landscape if you will.

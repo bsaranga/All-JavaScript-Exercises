@@ -10,6 +10,8 @@ let user = {
   }
 };
 
+// Learn why Symbol.toPrimitive is useful?
+
 console.log(String(user));
 console.log(Number(user));
 console.log(Number(user)+500);

@@ -1,8 +1,12 @@
 describe("testing-power-functions", function () {
     
     describe("manual-checking", () => {
-        it("2 raised to the power 3 is 8", function () {
-            assert.equal(pow(2, 3), 8);
+        it("2 raised to the power 0 is 1", function () {
+            assert.equal(pow(2, 0), 1);
+        });
+
+        it("0 raised to the power 0 is 1", function () {
+            assert.equal(pow(0, 0), 1);
         });
 
         it("3 raised to the power 4 is 81", function () {

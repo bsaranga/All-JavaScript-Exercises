@@ -1,7 +1,7 @@
 let id = Symbol("id");
 let id2 = Symbol("id");
 
-console.log(id === id2);
+console.log(id === id2); // No symbol is equal to another
 console.log(id.description);
 console.log(id2.description);
 
@@ -14,6 +14,8 @@ let user = {
     [id]: 5541,
     dob: "1993/02/17"
 }
+
+console.log(user);
 
 //Symbolic properties are skipped in for loops
 for (const key in user) {
