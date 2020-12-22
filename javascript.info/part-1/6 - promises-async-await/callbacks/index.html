@@ -6,8 +6,12 @@
     <title>Callbacks</title>
     <script src="./loader.js"></script>
     <script>
-        loadScript('./myScript.js', function(){
-            helloWorld();
+        loadScript('./myScript.js', function(script){
+            alert(`The script ${script.src} is loaded`);
+            
+            loadScript('./myScript2.js', function(script){
+                alert(`Script ${script.src} is loaded`);
+            });
         });
     </script>
 </head>

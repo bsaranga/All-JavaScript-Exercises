@@ -4,4 +4,5 @@ function loadScript(src, callback) {
     script.onload = () => callback(script);
     document.head.append(script);
     console.log("Script Loaded");
+    console.log(script);
 }
