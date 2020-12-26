@@ -18,3 +18,5 @@ bar(); // when bar is executed it executes baz within its scope, 'baz' has a par
 
 console.log(bam); // prints "yay"
 console.log(foo); // prints "bar" ...if line 1 was commented, then this will throw a Reference Error
+
+// In JavaScript, the unit of scope is the function
