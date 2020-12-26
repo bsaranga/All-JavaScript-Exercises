@@ -1,13 +1,21 @@
+const fs = require('fs');
+const path = require('path');
+
 let promise = new Promise(
     
-    function(resolve, reject){
-        setTimeout(
-            () => resolve("It's done"), 1500
-        );
+    function executor(resolve, reject) {
+        try {
+            let result = fs.readFileSync(path.resolve(__dirname, 'myContent.txt'));
+            resolve(result.toString());
+        } catch (err) {
+            reject(err.message);
+        }
     }
 
 );
 
-promise.then(
-    value => console.log(value), error => console.log(error)
-);
+promise
+    .then((val) => console.log(val))
+    .catch((err) => {
+        console.log(err);
+    })
