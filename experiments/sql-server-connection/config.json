@@ -1,0 +1,15 @@
+{
+    "server": "kronoflexmain.database.windows.net",
+    "authentication": {
+        "type": "default",
+        "options": {
+            "userName": "bsaranga",
+            "password": "Complexnumbers&123"
+        }
+    },
+    "options": {
+        "encrypt": true,
+        "validateBulkLoadParameters": false,
+        "database": "kf-main"
+    }
+}
