@@ -1,0 +1,9 @@
+{
+    "user": "bsaranga",
+    "password": "Complexnumbers&123",
+    "server": "kronoflexmain.database.windows.net",
+    "database": "kf-main",
+    "options": {
+        "enableArithAbort": false
+    }
+}
