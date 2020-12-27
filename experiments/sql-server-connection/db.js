@@ -2,15 +2,11 @@ const fs = require('fs')
 const sql = require('mssql')
 const config = JSON.parse(fs.readFileSync('./config-mssql.json'))
 
-const pool = new sql.ConnectionPool(config);
-const poolConnect = pool.connect();
-
-(async function() {
-    await poolConnect
-    try {
-        const result = await pool.request().query('select * from dbo.Users')
-        console.dir(result)
-    } catch (error) {
-        
-    }
-})()
+let data;
+new sql.ConnectionPool(config)
+                  .connect()
+                  .then(pool => {
+                      return pool.query`select * from dbo.Users`
+                  })
+                  .then(result => console.log(result))
+                  .catch(err => console.log(`An error occured ${err}`))
