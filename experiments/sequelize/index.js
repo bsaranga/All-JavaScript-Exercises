@@ -13,8 +13,6 @@ async function connect(conn) {
     }
 }
 
-//connect(sql);
-
 class Users extends Model {};
 
 Users.init({
@@ -45,8 +43,18 @@ Users.init({
     timestamps: false
 })
 
-console.log(Users === sql.models.Users);
 
-Users.sync({alter: true})
-    .then(val => console.log(`Synced: ${val}`))
-    .catch(err => console.log(`Not synced: ${err}`));
+const newUser = Users.build({
+    first_name: "Saranga",
+    last_name: "Buwaneka",
+    email: "bsaranga@gmail.com",
+    user_name: "bsaranga",
+    "password": "sdjfhsd98678"
+})
+
+async function saveInstance(modelInstance) {
+    await modelInstance.save();
+    console.log(`${modelInstance} was saved to db`);
+}
+
+saveInstance(newUser);
