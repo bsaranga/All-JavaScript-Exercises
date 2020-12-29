@@ -8,7 +8,7 @@ async function seed() {
     await sequelize.models.User.create({
         name: "Saranga",
         email: "bsaranga@gmail.com",
-        hashed_password: "sdhf6387"
+        hashed_password: "mynameiskhan"
     })
 
     console.log('Database seeded');

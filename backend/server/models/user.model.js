@@ -1,6 +1,26 @@
 const { DataTypes, Model } = require('sequelize')
+const crypto = require('crypto');
+const { set } = require('../sequelize');
 
-class User extends Model {}
+class User extends Model {
+
+    static makeSalt() {
+        return Math.round(new Date().valueOf() * Math.random())
+    }
+
+    encryptPassword(password, salt) {
+        if(!password) return ''
+        try {
+            return crypto
+                .createHmac('sha1', salt)
+                .update(password)
+                .digest('hex')
+        } catch (err) {
+            console.log(`Hashing Error: ${err}`);
+            return 'ERROR OCCURED WHILE HASHING'
+        }
+    }
+}
 
 module.exports = (sequelize) => {
     User.init(
@@ -33,8 +53,16 @@ module.exports = (sequelize) => {
                     }
                 }
             },
+            salt: {
+                type: DataTypes.STRING(),
+                defaultValue: User.makeSalt()
+            },
             hashed_password: {
-                type: DataTypes.STRING(12),
+                type: DataTypes.STRING(),
+                set(value){
+                    const salt = this.getDataValue('salt').toString();
+                    this.setDataValue('hashed_password', this.encryptPassword(value, salt))
+                },
                 allowNull: false,
                 validate: {
                     notNull: {
