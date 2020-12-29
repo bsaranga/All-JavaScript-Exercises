@@ -1,16 +1,16 @@
+const c = require('../config/colors')
 const config = require('../config/config')
+const sequelize = require('./sequelize')
 const app = require('./express')
-const {Sequelize} = require('sequelize')
 
-const sequelize = new Sequelize(config.databaseConfig)
 sequelize.authenticate().then(() => {
     console.log('Database connection established successfully')
-}).catch(err => `Error: ${err}`);
+}).catch(err => console.log(c.bRed, `Error: ${err}`));
 
 
 app.listen(config.port, err => {
     if(err) {
-        console.log(`An error occurred: ${err}`)
+        console.log(c.bRed, `An error occurred: ${err}`)
     }
-    console.log(`Server running on port ${config.port}`)
+    console.log(c.bGreen, `Server running on port ${config.port}`)
 })

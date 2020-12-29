@@ -8,11 +8,11 @@ const config = {
         password: "Complexnumbers&123",
         host: "kronoflexmain.database.windows.net",
         dialect: "mssql",
-        options: {
-        validateBulkLoadParameters: true,
-        encrypt: true
-        },
         dialectOptions: {
+            options: {
+                validateBulkLoadParameters: true,
+                encrypt: true
+            },
             connectTimeout: 1000
         },
         define: {

@@ -21,7 +21,7 @@ class User extends Model {
                 .digest('hex')
         } catch (err) {
             console.log(`Hashing Error: ${err}`);
-            return 'ERROR OCCURED WHILE HASHING'
+            return null;
         }
     }
 }
@@ -64,7 +64,6 @@ module.exports = (sequelize) => {
             hashed_password: {
                 type: DataTypes.STRING(),
                 set(value){
-                    const salt = this.getDataValue('salt').toString();
                     this.setDataValue('hashed_password', this.encryptPassword(value))
                 },
                 allowNull: false,

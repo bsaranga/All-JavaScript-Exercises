@@ -1,22 +1,19 @@
 const User = require('../sequelize').models.User
 const extend = require('lodash').extend
-// TODO: Error handler
+const errorHandler = require('./error.controller')
 
-const create = async (req, res) => {
+const UserCtrl = {};
+
+UserCtrl.create = async (req, res) => {
     try {
         const user = await User.create(req.body)
         return res.status(200).json({
             message: "Successfully signed up!"
         })
     } catch (error) {
-        return res.status(400).json({
-            error: error.toString()
-        })
+        return res.status(400).json(errorHandler(error))
     }
     
 }
-
-const UserCtrl = {};
-UserCtrl.create = create
 
 module.exports = UserCtrl
