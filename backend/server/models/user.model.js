@@ -1,45 +1,50 @@
-const { DataTypes, Model } = require('sequelize/types')
-const sequelize = require('../db')
+const { DataTypes, Model } = require('sequelize')
 
 class User extends Model {}
 
-User.init({
-    name: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        validate: {
-            notNull: {
-                msg: 'Name is required'
-            }
-        },
-        set(value) {
-            this.setDataValue('name', value => value.trim())
-        }
-    },
-    email: {
-        type: DataTypes.STRING(50),
-        unique: {
-            name: 'email',
-            msg: 'Email already exists'
-        },
-        validate: {
-            isEmail: {
-                msg: 'Not a valid email'
+module.exports = (sequelize) => {
+    User.init(
+        {
+            name: {
+                type: DataTypes.STRING(50),
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: 'Name is required'
+                    }
+                },
+                set(value) {
+                    this.setDataValue('name', value.trim())
+                }
             },
-            notNull: {
-                msg: 'Email is required'
+            email: {
+                type: DataTypes.STRING(50),
+                unique: {
+                    name: 'email',
+                    msg: 'Email already exists'
+                },
+                allowNull: false,
+                validate: {
+                    isEmail: {
+                        msg: 'Not a valid email'
+                    },
+                    notNull: {
+                        msg: 'Email is required'
+                    }
+                }
+            },
+            hashed_password: {
+                type: DataTypes.STRING(12),
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: 'Password is required'
+                    }
+                }
             }
+        },
+        {
+            sequelize: sequelize,
         }
-    },
-    hashed_password: {
-        type: DataTypes.STRING(12),
-        validate: {
-            isNull: {
-                msg: 'Password is required'
-            }
-        }
-    }
-},
-{
-    sequelize: sequelize,
-})
+    )
+}
