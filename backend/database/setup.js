@@ -27,23 +27,3 @@ async function seed() {
 }
 
 //seed();
-
-async function getUser(username) {
-    const user = await sequelize.models.User.findAll({
-        where: {
-            name: username
-        }
-    })
-    return user
-}
-
-async function authenticate(username, password) {
-    const users = await getUser(username);
-    users.forEach(user => {
-        if(user.authenticate(password)) {
-            authFlag = 1;
-            console.log(`User found, and authenticated`)
-            console.log(`The user email is: ${user.getDataValue('email')}`)
-        }
-    })
-}
