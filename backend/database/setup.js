@@ -26,4 +26,4 @@ async function seed() {
     console.log('Database seeded');
 }
 
-//seed();
+seed();

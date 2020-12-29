@@ -12,6 +12,4 @@ router.route('/api/users/:userId')
     .put(userCtrl.update)
     //.delete(userCtrl.remove)
 
-router.param('userId', userCtrl.userByID)
-
 module.exports = router

@@ -1,10 +1,7 @@
 const User = require('../sequelize').models.User
-const extend = require('lodash').extend
 const errorHandler = require('./error.controller')
 
-const UserCtrl = {};
-
-UserCtrl.create = async (req, res) => {
+async function create(req, res) {
     try {
         const user = await User.create(req.body)
         return res.status(200).json({
@@ -12,18 +9,33 @@ UserCtrl.create = async (req, res) => {
         })
     } catch (error) {
         return res.status(400).json(errorHandler(error))
-    }
-    
+    }   
 }
 
-UserCtrl.read = async (req, res) => {
-    return res.status(200).json(req.profile)
+async function read(req, res) {
+    const user = await User.findAll({
+        attributes: {exclude: ['id', 'salt', 'hashed_password']},
+        where: {
+            id: req.params.userId
+        }
+    })
+    return res.status(200).json(user)
 }
 
-UserCtrl.update = async (req, res) => {
+async function update(req, res) {
     try {
-        let userInstance = req.profile
-        //TO DO
+        await User.update(req.body, {
+            where: {
+                id: req.params.userId
+            }
+        })
+        const updatedUser = await User.findAll({
+            attributes: {exclude: ['id', 'salt', 'hashed_password']},
+            where: {
+                id: req.params.userId
+            }
+        })
+        return res.status(200).json(updatedUser)
     } catch (error) {
         return res.status(400).json({
             error: error
@@ -31,7 +43,7 @@ UserCtrl.update = async (req, res) => {
     }
 }
 
-UserCtrl.list = async (req, res) => {
+async function list(req, res){
     try {
         const users = await User.findAll({
             attributes: ['name', 'email', 'createdAt', 'updatedAt']
@@ -42,26 +54,9 @@ UserCtrl.list = async (req, res) => {
     }
 }
 
-UserCtrl.userByID = async (req, res, next, id) => {
-    try {
-        let user = await User.findAll({
-            //attributes: ['name','email','createdAt','updatedAt'],
-            where: {
-                id: id
-            }
-        })
-
-        if(!user) return res.status(400).json({
-            error: "User not found"
-        })
-
-        req.profile = user;
-        next()
-    } catch (error) {
-        return res.status(400).json({
-            error: "User not found"
-        })
-    }
+module.exports = {
+    create,
+    read,
+    update,
+    list
 }
-
-module.exports = UserCtrl
