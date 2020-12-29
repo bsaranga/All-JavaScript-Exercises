@@ -1,6 +1,6 @@
-import config from '../config/config'
-import app from './express'
-import {Sequelize} from 'sequelize'
+const config = require('../config/config')
+const app = require('./express')
+const {Sequelize} = require('sequelize')
 
 const sequelize = new Sequelize(config.databaseConfig)
 sequelize.authenticate().then(() => {

@@ -1,11 +1,11 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
-import compress from 'compression'
-import cors from 'cors'
-import helmet from 'helmet'
+const express = require('express')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const compress = require('compression')
+const cors = require('cors')
+const helmet = require('helmet')
 
-import Template from '../template'
+const {Template} = require('../template')
 
 const app = express()
 
@@ -20,4 +20,4 @@ app.get('/', (req, res) => {
     res.status(200).send(Template())
 })
 
-export default app
+module.exports = app

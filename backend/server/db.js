@@ -1,6 +1,6 @@
-import config from '../config/config'
-import { Sequelize, DataTypes } from 'sequelize'
+const config = require('../config/config')
+const { Sequelize } = require('sequelize')
 
 const sequelize = new Sequelize(config.databaseConfig)
 
-export default sequelize
+module.exports = sequelize

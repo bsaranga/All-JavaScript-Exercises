@@ -1,5 +1,5 @@
-import { DataTypes, Model } from 'sequelize/types';
-import sequelize from '../db'
+const { DataTypes, Model } = require('sequelize/types')
+const sequelize = require('../db')
 
 class User extends Model {}
 
