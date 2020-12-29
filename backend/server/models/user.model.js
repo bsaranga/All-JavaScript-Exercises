@@ -4,15 +4,19 @@ const { set } = require('../sequelize');
 
 class User extends Model {
 
+    authenticate(plainText) {
+        return this.encryptPassword(plainText) === this.hashed_password
+    }
+
     static makeSalt() {
         return Math.round(new Date().valueOf() * Math.random())
     }
 
-    encryptPassword(password, salt) {
+    encryptPassword(password) {
         if(!password) return ''
         try {
             return crypto
-                .createHmac('sha1', salt)
+                .createHmac('sha1', this.salt.toString())
                 .update(password)
                 .digest('hex')
         } catch (err) {
@@ -61,7 +65,7 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING(),
                 set(value){
                     const salt = this.getDataValue('salt').toString();
-                    this.setDataValue('hashed_password', this.encryptPassword(value, salt))
+                    this.setDataValue('hashed_password', this.encryptPassword(value))
                 },
                 allowNull: false,
                 validate: {
