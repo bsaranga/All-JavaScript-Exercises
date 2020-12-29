@@ -5,6 +5,7 @@ const compress = require('compression')
 const cors = require('cors')
 const helmet = require('helmet')
 const userRoutes = require('./routes/user.routes')
+const authRoutes = require('./routes/auth.routes')
 
 const {Template} = require('../template')
 
@@ -24,5 +25,6 @@ app.get('/', (req, res) => {
 */
 
 app.use('/', userRoutes);
+app.use('/', authRoutes);
 
 module.exports = app
