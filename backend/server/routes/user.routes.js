@@ -10,6 +10,6 @@ router.route('/api/users')
 router.route('/api/users/:userId')
     .get(userCtrl.read)
     .put(userCtrl.update)
-    //.delete(userCtrl.remove)
+    .delete(userCtrl.remove)
 
 module.exports = router

@@ -1,5 +1,6 @@
 const User = require('../sequelize').models.User
 const errorHandler = require('./error.controller')
+const exists = require('../helpers/helpers')
 
 async function create(req, res) {
     try {
@@ -43,6 +44,25 @@ async function update(req, res) {
     }
 }
 
+async function remove(req, res){
+    exists(User, req.params.userId).then(val => {
+        if(val) {
+            User.destroy({
+                where: {
+                    id: req.params.userId
+                }
+            })
+            return res.status(200).json({
+                message: "Deleted user"
+            })
+        }
+    }).catch(err => {
+        return res.status(400).json({
+            error: err
+        })
+    })
+}
+
 async function list(req, res){
     try {
         const users = await User.findAll({
@@ -58,5 +78,6 @@ module.exports = {
     create,
     read,
     update,
-    list
+    list,
+    remove
 }
