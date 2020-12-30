@@ -2,6 +2,18 @@ const User = require('../sequelize').models.User
 const errorHandler = require('./error.controller')
 const exists = require('../helpers/helpers')
 
+async function userById(req, res, next, id) {
+    User.findByPk(id).then(user => {
+        if(!user) return res.status(400).json({error: "User not found"})
+        req.profile = JSON.stringify(user)
+        next()
+    }).catch(err => {
+        return res.status(400).json({
+            error: "Could not retrieve user"
+        })
+    })
+}
+
 async function create(req, res) {
     try {
         const user = await User.create(req.body)
@@ -79,5 +91,6 @@ module.exports = {
     read,
     update,
     list,
-    remove
+    remove,
+    userById
 }

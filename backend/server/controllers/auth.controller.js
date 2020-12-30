@@ -38,11 +38,14 @@ const signout = (req, res) => {
 
 const requireSignIn = expressJwt({
     secret: config.jwtSecret,
+    algorithms: ['RS256'],
     userProperty: 'auth'
 })
 
 const hasAuthorization = (req, res, next) => {
-    // TO DO
+    console.log('In hasAuthorization')
+    console.log(req.profile);
+    next()
 }
 
 module.exports = {signin, signout, requireSignIn, hasAuthorization}
