@@ -12,7 +12,7 @@ const signin = async(req, res) => {
         if(!user) return res.status(401).json({error: "User not found"})
         if(!user.authenticate(req.body.password)) return res.status(401).send({error: "Email and password do not match"})
 
-        const token = jwt.sign({id: user.id}, config.jwtSecret)
+        const token = jwt.sign({id: user.id}, config.jwtSecret, {algorithm: 'HS256'})
 
         res.cookie('t', token, { expire: new Date() + 9999 })
 
@@ -25,6 +25,7 @@ const signin = async(req, res) => {
             }
         })
     }).catch(err => {
+        console.log(`Sign-in error: ${err}`)
         return res.status(401).json({ error: "Could not sign in" })
     })
 }
@@ -38,13 +39,17 @@ const signout = (req, res) => {
 
 const requireSignIn = expressJwt({
     secret: config.jwtSecret,
-    algorithms: ['RS256'],
+    algorithms: ['HS256'],
     userProperty: 'auth'
 })
 
 const hasAuthorization = (req, res, next) => {
-    console.log('In hasAuthorization')
-    console.log(req.profile);
+    const authorized = req.profile && req.auth && JSON.parse(req.profile).id == req.auth.id
+    if(!authorized) {
+        return res.status(403).json({
+            error: "User is not authorized"
+        })
+    }
     next()
 }
 
