@@ -9,7 +9,6 @@ const helmet = require('helmet')
 const userRoutes = require('./routes/user.routes')
 const authRoutes = require('./routes/auth.routes')
 const devBundle = require('./devBundle')
-const {Template} = require('../template')
 const template = require('../template')
 
 const app = express()

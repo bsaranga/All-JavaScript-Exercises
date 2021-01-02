@@ -1,7 +1,6 @@
 const React = require('react')
 const MainRouter = require('./MainRouter')
 const BrowserRouter = require('react-router-dom').BrowserRouter
-const hot = require('react-hot-loader').hot
 
 const App = () => {
     return (
@@ -11,4 +10,4 @@ const App = () => {
     )
 }
 
-module.exports = hot(module)(App)
+module.exports = App

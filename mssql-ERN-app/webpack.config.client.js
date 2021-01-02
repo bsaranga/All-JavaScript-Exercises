@@ -6,10 +6,7 @@ const config = {
     name: "browser",
     mode: "development",
     devtool: "cheap-module-source-map",
-    entry: [
-        "webpack-hot-middleware/client?reload=true",
-        path.join(CURRENT_WORKING_DIR, "client/main.js")
-    ],
+    entry: [path.join(CURRENT_WORKING_DIR, "client/main.js")],
     output: {
         path: path.join(CURRENT_WORKING_DIR, "/dist"),
         filename: "bundle.js",
@@ -33,14 +30,8 @@ const config = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     ],
-    resolve:{
-        alias:{
-            'react-dom': '@hot-loader/react-dom'
-        }
-    }
 }
 
 module.exports = config;
