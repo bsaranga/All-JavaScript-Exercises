@@ -3,10 +3,10 @@ const config = {
     port: process.env.PORT || 3000,
     jwtSecret: process.env.JWT_SECRET || "imtheonewhoknocks",
     databaseConfig: {
-        database: "kf-main",
-        username: "bsaranga",
+        database: "Kronoflex",
+        username: "SA",
         password: "Complexnumbers&123",
-        host: "kronoflexmain.database.windows.net",
+        host: "localhost",
         dialect: "mssql",
         dialectOptions: {
             options: {
