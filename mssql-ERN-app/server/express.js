@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user.routes')
 const authRoutes = require('./routes/auth.routes')
 const devBundle = require('./devBundle')
 const {Template} = require('../template')
+const template = require('../template')
 
 const app = express()
 devBundle.compile(app) // development only -- comment during production
@@ -22,6 +23,10 @@ app.use(cookieParser())
 app.use(compress())
 app.use(helmet())
 app.use(cors())
+
+app.get('/', (req, res) => {
+    res.status(200).send(template())
+})
 
 app.use('/', userRoutes);
 app.use('/', authRoutes);
