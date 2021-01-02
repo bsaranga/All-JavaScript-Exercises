@@ -1,3 +1,5 @@
+const path = require('path')
+const cwd = process.cwd()
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -6,10 +8,13 @@ const cors = require('cors')
 const helmet = require('helmet')
 const userRoutes = require('./routes/user.routes')
 const authRoutes = require('./routes/auth.routes')
-
+const devBundle = require('./devBundle')
 const {Template} = require('../template')
 
 const app = express()
+devBundle.compile(app) // development only -- comment during production
+
+app.use('/dist', express.static(path.join(cwd, 'dist')))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
