@@ -8,11 +8,9 @@ const cors = require('cors')
 const helmet = require('helmet')
 const userRoutes = require('./routes/user.routes')
 const authRoutes = require('./routes/auth.routes')
-const devBundle = require('./devBundle')
 const template = require('../template')
 
 const app = express()
-devBundle.compile(app) // development only -- comment during production
 
 app.use('/dist', express.static(path.join(cwd, 'dist')))
 
