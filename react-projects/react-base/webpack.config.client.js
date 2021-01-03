@@ -1,6 +1,4 @@
-const { userInfo } = require('os');
 const path = require('path');
-const { web } = require('webpack');
 const webpack = require('webpack');
 const CURRENT_WORKING_DIR = process.cwd();
 
