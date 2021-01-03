@@ -23,3 +23,7 @@ function clearJWT(callback) {
     }
     callback()
 }
+
+module.exports = {
+    authenticate, isAuthenticated, clearJWT
+}
