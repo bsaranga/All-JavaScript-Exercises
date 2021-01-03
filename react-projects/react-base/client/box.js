@@ -3,6 +3,7 @@ import {hot} from 'react-hot-loader';
 import Table from './table';
 import NameForm from './nameform';
 import Calculator from './Calculator';
+import Example from './hooks'
 
 class Box extends React.Component{
     constructor(props){
@@ -84,6 +85,7 @@ class Box extends React.Component{
                 <Table data={this.getListData()}/>
                 <NameForm/>
                 <Calculator/>
+                <Example/>
             </div>
         )
 
