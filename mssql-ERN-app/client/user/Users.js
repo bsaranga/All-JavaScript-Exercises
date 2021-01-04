@@ -1,4 +1,6 @@
 const React = require('react')
+const useState = React.useState
+const useEffect = React.useEffect
 const list = require('./api-user').list
 
 module.exports = function Users() {
@@ -8,7 +10,7 @@ module.exports = function Users() {
     useEffect(() => {
         const abortController = new AbortController()
         const signal = abortController.signal
-
+                
         list(signal).then((data) => {
             if (data && data.error) {
                 console.log(data.error)
@@ -18,9 +20,12 @@ module.exports = function Users() {
         })
 
         return function cleanup() {
+            console.log('Component Unmounted')
             abortController.abort()
         }
-    }, [])
+    },[])
+
+    console.log(users)
 
     return(
         <table className="ml-6">
