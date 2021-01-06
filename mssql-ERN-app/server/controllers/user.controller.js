@@ -1,5 +1,4 @@
 const User = require('../sequelize').models.User
-const errorHandler = require('./error.controller')
 const exists = require('../helpers/helpers')
 
 async function userById(req, res, next, id) {
@@ -21,7 +20,7 @@ async function create(req, res) {
             message: "Successfully signed up!"
         })
     } catch (error) {
-        return res.status(400).json(errorHandler(error))
+        return res.status(400).json(error)
     }   
 }
 
@@ -82,7 +81,7 @@ async function list(req, res){
         })
         return res.status(200).json(users)
     } catch (error) {
-        return res.status(400).json(errorHandler(error))
+        return res.status(400).json(error)
     }
 }
 

@@ -8,8 +8,8 @@ module.exports = function Users() {
     const [users, setUsers] = useState([]) // initializes 'users' state variable for this functional component with [], setUsers can be used to update the state var
 
     useEffect(() => {
-        const abortController = new AbortController()
-        const signal = abortController.signal
+        let abortController = new AbortController()
+        let signal = abortController.signal
                 
         list(signal).then((data) => {
             if (data && data.error) {
@@ -25,31 +25,29 @@ module.exports = function Users() {
         }
     },[])
 
-    console.log(users)
-
     return(
         <table className="ml-6">
             <thead>
                 <tr>
-                    <th className="border px-8 text-sm text-gray-900">Title 1</th>
-                    <th className="border px-8 text-sm text-gray-900">Title 2</th>
-                    <th className="border px-8 text-sm text-gray-900">Title 3</th>
-                    <th className="border px-8 text-sm text-gray-900">Title 4</th>
+                    <th className="border px-8 text-sm text-gray-900">Name</th>
+                    <th className="border px-8 text-sm text-gray-900">Email</th>
+                    <th className="border px-8 text-sm text-gray-900">Created At</th>
+                    <th className="border px-8 text-sm text-gray-900">Updated At</th>
                 </tr>
             </thead>
             <tbody>
-                <tr className="bg-blue-100">
-                    <td className="border px-2 text-sm font-light text-gray-800">kjsdhfkjsdhfksd</td>
-                </tr>
-                <tr className="">
-                    <td className="border px-2 text-sm font-light text-gray-800">kjsdhfkjsdhfksd</td>
-                </tr>
-                <tr className="bg-blue-100">
-                    <td className="border px-2 text-sm font-light text-gray-800">kjsdhfkjsdhfksd</td>
-                </tr>
-                <tr className="">
-                    <td className="border px-2 text-sm font-light text-gray-800">kjsdhfkjsdhfksd</td>
-                </tr>
+            {
+                users.map((val, i) => {
+                    let keys = Object.keys(val);
+                    return(
+                        <tr className={(i%2==0) ? "bg-blue-100" : ""} key={i}>
+                            {keys.map((k, i) => {
+                                return(<td className="border px-2 text-sm font-light text-gray-800" key={i}>{val[k]}</td>)
+                            })}
+                        </tr>
+                    )
+                })
+            }
             </tbody>
         </table>
     )

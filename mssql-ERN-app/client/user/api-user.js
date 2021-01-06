@@ -18,7 +18,7 @@ const create = async (user) => {
 
 // List users
 
-const list = async (signal) => {
+async function list (signal) {
     try {
         let response = await fetch('/api/users', {
             method: 'GET',
