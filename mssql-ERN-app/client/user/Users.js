@@ -2,6 +2,7 @@ const React = require('react')
 const useState = React.useState
 const useEffect = React.useEffect
 const list = require('./api-user').list
+const Table = require('antd').Table
 
 module.exports = function Users() {
     
@@ -25,30 +26,34 @@ module.exports = function Users() {
         }
     },[])
 
+    console.log(users)
+
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name'
+        },
+        {
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email'
+        },
+        {
+            title: 'Created',
+            dataIndex: 'createdAt',
+            key: 'createdAt'
+        },
+        {
+            title: 'Updated',
+            dataIndex: 'updatedAt',
+            key: 'updatedAt'
+        }
+    ]
+
     return(
-        <table className="ml-6">
-            <thead>
-                <tr>
-                    <th className="border px-8 text-sm text-gray-900">Name</th>
-                    <th className="border px-8 text-sm text-gray-900">Email</th>
-                    <th className="border px-8 text-sm text-gray-900">Created At</th>
-                    <th className="border px-8 text-sm text-gray-900">Updated At</th>
-                </tr>
-            </thead>
-            <tbody>
-            {
-                users.map((val, i) => {
-                    let keys = Object.keys(val);
-                    return(
-                        <tr className={(i%2==0) ? "bg-blue-100" : ""} key={i}>
-                            {keys.map((k, i) => {
-                                return(<td className="border px-2 text-sm font-light text-gray-800" key={i}>{val[k]}</td>)
-                            })}
-                        </tr>
-                    )
-                })
-            }
-            </tbody>
-        </table>
+        <div>
+            <Table dataSource={users} columns={columns} rowKey='id'/>
+        </div>
     )
 }

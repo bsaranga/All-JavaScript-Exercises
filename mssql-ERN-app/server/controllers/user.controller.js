@@ -77,7 +77,7 @@ async function remove(req, res){
 async function list(req, res){
     try {
         const users = await User.findAll({
-            attributes: ['name', 'email', 'createdAt', 'updatedAt']
+            attributes: ['id', 'name', 'email', 'createdAt', 'updatedAt']
         })
         return res.status(200).json(users)
     } catch (error) {
