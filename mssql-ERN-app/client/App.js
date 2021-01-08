@@ -1,6 +1,6 @@
-const React = require('react')
-const MainRouter = require('./MainRouter')
-const BrowserRouter = require('react-router-dom').BrowserRouter
+import React from 'react'
+import MainRouter from './MainRouter'
+import {BrowserRouter} from 'react-router-dom'
 
 const App = () => {
     return (
@@ -10,4 +10,4 @@ const App = () => {
     )
 }
 
-module.exports = App
+export default App

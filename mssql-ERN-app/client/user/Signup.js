@@ -1,8 +1,8 @@
-const React = require('react')
-const useState = React.useState
-const create = require('./api-user').create
+import React from 'react'
+import {useState} from 'react'
+import {create} from './api-user'
 
-module.exports = function Signup() {
+export default function Signup() {
 
     const [values, setValues] = useState({
         name: '',

@@ -1,10 +1,10 @@
-const React = require('react')
-const useState = React.useState
-const useEffect = React.useEffect
-const list = require('./api-user').list
-const Table = require('antd').Table
+import React from 'react'
+import {useState} from 'react'
+import {useEffect} from 'react'
+import {list} from './api-user'
+import {Table} from 'antd'
 
-module.exports = function Users() {
+export default function Users() {
     
     const [users, setUsers] = useState([]) // initializes 'users' state variable for this functional component with [], setUsers can be used to update the state var
 

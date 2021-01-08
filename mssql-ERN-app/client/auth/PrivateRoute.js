@@ -1,8 +1,8 @@
-const React = require('react')
-const Component = React.Component
-const Route = require('react-router-dom').Route
-const Redirect = require('react-router-dom').Redirect
-const auth = require('./auth-helper')
+import React from 'react'
+import {Route} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
+import auth from './auth-helper'
+
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     <Route {...rest} render = {props => (
@@ -12,4 +12,4 @@ const PrivateRoute = ({component: Component, ...rest}) => {
     )}/>
 }
 
-module.exports = PrivateRoute
+export default PrivateRoute

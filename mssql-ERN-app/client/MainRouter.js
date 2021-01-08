@@ -1,8 +1,8 @@
-const React = require('react')
-const {Route, Switch} = require('react-router-dom')
-const Home = require('./core/Home')
-const Signup = require('./user/Signup')
-const Users = require('./user/Users')
+import React from 'react'
+import {Route, Switch} from 'react-router-dom'
+import Home from './core/Home'
+import Signup from './user/Signup'
+import Users from './user/Users'
 
 const MainRouter = () => {
     return (
@@ -16,4 +16,4 @@ const MainRouter = () => {
     )
 }
 
-module.exports = MainRouter
+export default MainRouter

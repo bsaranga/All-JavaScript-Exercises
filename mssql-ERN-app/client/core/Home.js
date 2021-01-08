@@ -1,7 +1,7 @@
-const React = require('react')
-const Link = require('react-router-dom').Link
+import React from 'react'
+import {Link} from 'react-router-dom'
 
-module.exports = function Home() {
+export default function Home() {
     return (
         <div>
             <Link to="/users">Users</Link>
