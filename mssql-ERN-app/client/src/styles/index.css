@@ -1,0 +1,7 @@
+@import '~antd/dist/antd.css';
+
+#main {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    margin-top: 1rem;
+}
