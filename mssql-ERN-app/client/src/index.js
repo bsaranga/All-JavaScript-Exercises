@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import './styles/index.css'
 import App from './App';
 
-ReactDOM.render(<App />,
+function AppLayout() {
+  return (
+    <div id='main'>
+      <App/>
+    </div>
+  )
+}
+
+ReactDOM.render(<AppLayout/>,
   document.getElementById('root')
 );

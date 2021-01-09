@@ -3,7 +3,6 @@ import {useState} from 'react'
 import {useEffect} from 'react'
 import {list} from './api-user'
 import {Table} from 'antd'
-import '../styles/index.css'
 
 export default function Users() {
     
@@ -53,7 +52,7 @@ export default function Users() {
     ]
 
     return(
-        <div id="main">
+        <div>
             <Table dataSource={users} columns={columns} rowKey='id'/>
         </div>
     )

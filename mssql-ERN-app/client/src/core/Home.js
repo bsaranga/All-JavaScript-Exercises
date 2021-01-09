@@ -1,11 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import '../styles/core/home.css'
-import '../styles/index.css'
 
 export default function Home() {
     return (
-        <div id="main">
+        <div>
             <Link className="linkTag" to="/users">Users</Link>
             <Link className="linkTag" to="/signup">Sign up</Link>
             <h1>Hello World, from React</h1>
