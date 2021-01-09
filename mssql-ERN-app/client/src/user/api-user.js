@@ -36,7 +36,7 @@ const read = async (params, credentials, signal) => {
     try {
         let response = await fetch(`/api/users/${params.userId}`, {
             method: 'GET',
-            signal: 'signal',
+            signal: signal,
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

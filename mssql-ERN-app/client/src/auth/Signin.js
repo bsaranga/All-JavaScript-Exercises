@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { signin } from './api-auth'
 import { Form, Input, Button } from "antd";
-import { authenticate } from './auth-helper';
+import { authenticate, isAuthenticated } from './auth-helper';
 import { Redirect } from 'react-router';
 import { message } from 'antd';
 
@@ -27,7 +27,10 @@ export default function SignIn(props) {
     signin(user).then((data) => {
       if(data.error) {
         setValues({...values, error: data.error})
-      }else{
+      }else if(isAuthenticated().user.email === user.email){
+        message.info('Already signed in', 0.5)
+      }
+      else{
         authenticate(data, () => {
           message.success('Signed in',0.5)
           setValues({...values, error: '', redirectToReferrer: true})
