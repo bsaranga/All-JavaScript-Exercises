@@ -24,4 +24,4 @@ function clearJWT(callback) {
     callback()
 }
 
-export default {authenticate, isAuthenticated, clearJWT}
+export {authenticate, isAuthenticated, clearJWT}
