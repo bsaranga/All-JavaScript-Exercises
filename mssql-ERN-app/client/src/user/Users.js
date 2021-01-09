@@ -2,7 +2,9 @@ import React from 'react'
 import {useState} from 'react'
 import {useEffect} from 'react'
 import {list} from './api-user'
-import {Table} from 'antd'
+import {Table, Input} from 'antd'
+
+const {Search} = Input
 
 export default function Users() {
     
@@ -25,8 +27,6 @@ export default function Users() {
             abortController.abort()
         }
     },[])
-
-    console.log(users)
 
     const columns = [
         {
@@ -53,6 +53,7 @@ export default function Users() {
 
     return(
         <div>
+            <Search placeholder="Filter user" onSearch={(value) => console.log(value)} onChange={val => console.log(val.target.value)}/>
             <Table dataSource={users} columns={columns} rowKey='id'/>
         </div>
     )

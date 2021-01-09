@@ -1,4 +1,3 @@
-import React from 'react'
 import {useState} from 'react'
 import {create} from './api-user'
 import {Form, Input, Button, Typography, Modal} from 'antd'
@@ -134,8 +133,8 @@ export default function Signup() {
             {values.error && <Text type="danger">{values.error}</Text>}
           </Form.Item>
         </Form>
-        
-        <Modal visible={values.open} onOk={signIn} onCancel={closeModal}>
+
+        <Modal visible={values.open} onOk={signIn} onCancel={closeModal} title="User signed up">
             <p>Registered user successfully. You may sign in now</p>
         </Modal>
       </div>
