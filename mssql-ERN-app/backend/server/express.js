@@ -1,5 +1,4 @@
 const path = require('path')
-const cwd = process.cwd()
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -11,14 +10,20 @@ const authRoutes = require('./routes/auth.routes')
 
 const app = express()
 
-app.use('/dist', express.static(path.join(cwd, 'dist')))
+app.use(express.static(path.join(__dirname, 'client/')))
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.json()) //replace express with bodyParser if errors occurr
+app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 app.use(compress())
-app.use(helmet())
+app.use(helmet({
+    contentSecurityPolicy: false,
+}))
 app.use(cors())
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/', 'index.html'))
+})
 
 app.use('/', userRoutes);
 app.use('/', authRoutes);

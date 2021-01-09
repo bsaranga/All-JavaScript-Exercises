@@ -1,15 +1,14 @@
 require('webpack');
 const path = require('path');
-const CURRENT_WORKING_DIR = process.cwd();
 
 const nodeExternals = require('webpack-node-externals');
 const config = {
     name: "server",
     mode: "development",
-    entry: [path.join(CURRENT_WORKING_DIR, "./server/server.js")],
+    entry: [path.join(__dirname, "./server/server.js")],
     target: "node",
     output: {
-        path: path.join(CURRENT_WORKING_DIR, "/dist"),
+        path: path.join(__dirname, "/dist"),
         filename: "server.generated.js",
         publicPath: "/dist/",
         libraryTarget: "umd"
