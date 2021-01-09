@@ -8,7 +8,6 @@ const cors = require('cors')
 const helmet = require('helmet')
 const userRoutes = require('./routes/user.routes')
 const authRoutes = require('./routes/auth.routes')
-const template = require('../template')
 
 const app = express()
 
@@ -20,10 +19,6 @@ app.use(cookieParser())
 app.use(compress())
 app.use(helmet())
 app.use(cors())
-
-app.get('/', (req, res) => {
-    res.status(200).send(template())
-})
 
 app.use('/', userRoutes);
 app.use('/', authRoutes);
