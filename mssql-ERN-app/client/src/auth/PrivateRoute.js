@@ -1,15 +1,23 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
-import auth from './auth-helper'
+import {isAuthenticated} from './auth-helper'
 
 
-const PrivateRoute = ({component: Component, ...rest}) => {
-    <Route {...rest} render = {props => (
-        auth.isAuthenticated() ?
-            (<Component {...props}/>) :
-            (<Redirect to={{pathname: '/signin', state: {from: props.location}}}/>)
-    )}/>
+function PrivateRoute({component: Component, ...rest}) {
+    function auth() {
+        const userId = rest.computedMatch.params.userId
+        const authUserId = isAuthenticated().user.id
+        return Number(userId) === Number(authUserId)
+    }
+    console.log(rest)
+    return(
+        <Route {...rest} render = {props => (
+            auth() ?
+                (<Component {...props}/>) :
+                (<Redirect to={{pathname: '/signin', state: {from: props.location}}}/>)
+        )}/>
+    )
 }
 
 export default PrivateRoute
