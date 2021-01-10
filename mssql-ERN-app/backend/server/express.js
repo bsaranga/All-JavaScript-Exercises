@@ -1,12 +1,11 @@
-const path = require('path')
-const express = require('express')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const compress = require('compression')
-const cors = require('cors')
-const helmet = require('helmet')
-const userRoutes = require('./routes/user.routes')
-const authRoutes = require('./routes/auth.routes')
+import path from 'path'
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import compress from 'compression'
+import cors from 'cors'
+import helmet from 'helmet'
+import userRoutes from './routes/user.routes'
+import authRoutes from './routes/auth.routes'
 
 const app = express()
 
@@ -41,4 +40,4 @@ app.use((err, req, res, next) => {
     }
 })
 
-module.exports = app
+export default app

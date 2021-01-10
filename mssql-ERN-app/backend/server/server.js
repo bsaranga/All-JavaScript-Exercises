@@ -1,6 +1,6 @@
-const config = require('../config/config')
-const sequelize = require('./sequelize')
-const app = require('./express')
+import config from '../config/config'
+import sequelize from './sequelize'
+import app from './express'
 
 sequelize.authenticate().then(() => {
     console.log('Database connection established successfully')

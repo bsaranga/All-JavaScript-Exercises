@@ -1,7 +1,8 @@
-const User = require('../sequelize').models.User
-const jwt = require('jsonwebtoken')
-const expressJwt = require('express-jwt')
-const config = require('../../config/config')
+import sequelize from '../sequelize'
+const User = sequelize.models.User
+import jwt from 'jsonwebtoken'
+import expressJwt from 'express-jwt'
+import config from '../../config/config'
 
 const signin = async(req, res) => {
     User.findOne({
@@ -53,4 +54,4 @@ const hasAuthorization = (req, res, next) => {
     next()
 }
 
-module.exports = {signin, signout, requireSignIn, hasAuthorization}
+export {signin, signout, requireSignIn, hasAuthorization}

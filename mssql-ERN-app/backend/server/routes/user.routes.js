@@ -1,7 +1,6 @@
-const express = require('express')
-const userCtrl = require('../controllers/user.controller')
-const authCtrl = require('../controllers/auth.controller')
-const { route } = require('./auth.routes')
+import express from 'express'
+import * as userCtrl from '../controllers/user.controller'
+import * as authCtrl from '../controllers/auth.controller'
 
 const router = express.Router()
 
@@ -15,4 +14,5 @@ router.route('/api/users/:userId')
     .delete(authCtrl.requireSignIn, authCtrl.hasAuthorization, userCtrl.remove)
 
 router.param('userId', userCtrl.userById)
-module.exports = router
+
+export default router

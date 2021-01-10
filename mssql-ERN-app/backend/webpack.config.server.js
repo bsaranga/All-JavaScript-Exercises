@@ -1,7 +1,6 @@
-require('webpack');
-const path = require('path');
+const path = require('path')
+const nodeExternals = require('webpack-node-externals')
 
-const nodeExternals = require('webpack-node-externals');
 const config = {
     name: "server",
     mode: "development",
@@ -30,4 +29,4 @@ const config = {
 
 }
 
-module.exports = config;
+module.exports = config
