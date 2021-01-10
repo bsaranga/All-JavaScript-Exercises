@@ -3,14 +3,13 @@ import {Route} from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 import {isAuthenticated} from './auth-helper'
 
-
 function PrivateRoute({component: Component, ...rest}) {
     function auth() {
         const userId = rest.computedMatch.params.userId
         const authUserId = isAuthenticated().user.id
         return Number(userId) === Number(authUserId)
     }
-    console.log(rest)
+
     return(
         <Route {...rest} render = {props => (
             auth() ?

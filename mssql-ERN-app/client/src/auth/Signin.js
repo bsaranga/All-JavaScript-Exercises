@@ -4,6 +4,7 @@ import { Form, Input, Button } from "antd";
 import { authenticate } from './auth-helper';
 import { Redirect } from 'react-router';
 import { message } from 'antd';
+import uiSettings from '../uiSettings';
 
 export default function SignIn(props) {
 
@@ -29,11 +30,15 @@ export default function SignIn(props) {
         setValues({...values, error: data.error})
       }else{
         authenticate(data, () => {
-          message.success('Signed in',0.5)
+          message.success('Signed in', uiSettings.messageTime)
           setValues({...values, error: '', redirectToReferrer: true})
         })
       }
     })
+  }
+
+  if(values.error) {
+    message.error(values.error, 0.5)
   }
 
   const {from} = props.location.state || {

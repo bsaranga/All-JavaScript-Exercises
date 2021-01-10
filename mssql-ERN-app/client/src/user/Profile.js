@@ -6,6 +6,7 @@ import { Redirect } from 'react-router';
 
 import { Card } from 'antd';
 import { Link } from 'react-router-dom';
+import DeleteUser from './DeleteUser';
 
 export default function Profile({match}) {
 
@@ -47,7 +48,15 @@ export default function Profile({match}) {
             <p>{user.email}</p>
             <p>{user.createdAt}</p>
             <p>{user.updatedAt}</p>
-            <Link to={`/user/edit/${match.params.userId}`}>Edit</Link>
+            {
+                isAuthenticated().user && Number(isAuthenticated().user.id) === Number(match.params.userId) &&
+                (
+                    <div>
+                        <Link to={`/user/edit/${match.params.userId}`}>Edit</Link>
+                        <DeleteUser userId={match.params.userId}/>
+                    </div>
+                )
+            }
         </Card>
     )
 }
