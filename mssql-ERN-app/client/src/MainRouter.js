@@ -8,6 +8,7 @@ import Profile from './user/Profile'
 import PrivateRoute from './auth/PrivateRoute'
 import EditProfile from './user/EditProfile'
 import Header from './core/Header'
+import Timer from './timer/Timer'
 
 const MainRouter = () => {
     return (
@@ -20,6 +21,7 @@ const MainRouter = () => {
                 <Route path="/signin" component={SignIn}/>
                 <PrivateRoute path="/user/edit/:userId" component={EditProfile}/>
                 <Route path="/user/:userId" component={Profile}/>
+                <Route path="/timer" component={Timer}/>
             </Switch>
         </div>
     )

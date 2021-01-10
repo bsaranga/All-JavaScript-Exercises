@@ -63,6 +63,13 @@ const Header = withRouter(({history}) => {
             </Button>
           </span>
         )}
+        <Link
+          className="linkTag"
+          to="/timer"
+          style={isActive(history, "/timer")}
+        >
+          Timer
+        </Link>
       </span>
     );
 })
