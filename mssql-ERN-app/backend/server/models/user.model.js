@@ -1,5 +1,5 @@
-const { DataTypes, Model } = require('sequelize')
-const crypto = require('crypto');
+import { DataTypes, Model } from 'sequelize'
+import crypto from 'crypto'
 
 class User extends Model {
 
@@ -25,7 +25,7 @@ class User extends Model {
     }
 }
 
-module.exports = (sequelize) => {
+export default (sequelize) => {
     User.init(
         {
             name: {

@@ -1,4 +1,4 @@
-const sequelize = require('../server/sequelize');
+import sequelize from '../server/sequelize'
 
 async function seed() {
     

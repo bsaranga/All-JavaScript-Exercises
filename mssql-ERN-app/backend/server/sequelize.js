@@ -1,6 +1,6 @@
-const config = require('../config/config')
-const { Sequelize } = require('sequelize')
-const user = require('./models/user.model')
+import config from '../config/config'
+import { Sequelize } from 'sequelize'
+import user from './models/user.model'
 
 const sequelize = new Sequelize(config.databaseConfig)
 
@@ -12,4 +12,4 @@ async function createModel(model, sqlConn) {
 
 createModel(user, sequelize);
 
-module.exports = sequelize
+export default sequelize

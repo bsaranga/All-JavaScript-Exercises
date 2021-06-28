@@ -13,4 +13,4 @@ function exists(model, id){
     })
 }
 
-module.exports = exists
+export default exists

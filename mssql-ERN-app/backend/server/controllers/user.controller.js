@@ -1,5 +1,6 @@
-const User = require('../sequelize').models.User
-const exists = require('../helpers/helpers')
+import sequelize from '../sequelize'
+const User = sequelize.models.User
+import exists from '../helpers/helpers'
 
 async function userById(req, res, next, id) {
     User.findByPk(id).then(user => {
@@ -85,7 +86,7 @@ async function list(req, res){
     }
 }
 
-module.exports = {
+export {
     create,
     read,
     update,

@@ -1,7 +1,6 @@
-require('webpack');
-const path = require('path');
+const path = require('path')
+const nodeExternals = require('webpack-node-externals')
 
-const nodeExternals = require('webpack-node-externals');
 const config = {
     name: "server",
     mode: "development",
@@ -17,9 +16,14 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.m?js$/,
                 exclude: /node_modules/,
-                use: ["babel-loader"]
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                      presets: ['@babel/preset-env', '@babel/preset-react']
+                    }
+                }
             },
             {
                 test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
@@ -30,4 +34,4 @@ const config = {
 
 }
 
-module.exports = config;
+module.exports = config
