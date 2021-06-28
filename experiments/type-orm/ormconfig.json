@@ -1,0 +1,23 @@
+{
+    "type": "mssql",
+    "host": "kronoflexmain.database.windows.net",
+    "port": 1433,
+    "username": "bsaranga",
+    "password": "Complexnumbers&123",
+    "database": "kf-main",
+    "synchronize": true,
+    "logging": false,
+    "options" : {
+      "encrypt": true,
+      "enableArithAbort": false
+    },
+    "entities": [
+       "src/entity/**/*.js"
+    ],
+    "migrations": [
+       "src/migration/**/*.js"
+    ],
+    "subscribers": [
+       "src/subscriber/**/*.js"
+    ]
+ }

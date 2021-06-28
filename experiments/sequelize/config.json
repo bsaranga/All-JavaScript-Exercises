@@ -1,0 +1,17 @@
+{
+    "database": "kf-main",
+    "username": "bsaranga",
+    "password": "Complexnumbers&123",
+    "host": "kronoflexmain.database.windows.net",
+    "dialect": "mssql",
+    "options": {
+        "validateBulkLoadParameters": true,
+        "encrypt": true
+    },
+    "dialectOptions": {
+        "connectTimeout": 1000
+    },
+    "define": {
+        "freezeTableName": true
+    }
+}

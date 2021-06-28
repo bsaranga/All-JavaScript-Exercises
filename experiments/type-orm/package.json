@@ -1,0 +1,17 @@
+{
+  "name": "type-orm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mssql": "^6.3.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.29"
+  }
+}
